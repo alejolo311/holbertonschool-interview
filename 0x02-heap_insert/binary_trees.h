@@ -23,5 +23,7 @@ typedef struct binary_tree_s heap_t;
 void binary_tree_print(const binary_tree_t *);
 binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);
 heap_t *heap_insert(heap_t **root, int value);
+int count(heap_t *root);
+heap_t *sortMax(heap_t *new);
 
 #endif /* BINARY_H */
