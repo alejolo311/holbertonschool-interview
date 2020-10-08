@@ -6,5 +6,5 @@
 
 
 void menger(int level);
-
+char calculate(int col, int row);
 #endif /* MENGER_H */

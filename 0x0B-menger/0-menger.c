@@ -15,9 +15,24 @@ void menger(int level)
 	for (c = 0; c < size; c++)
 	{
 		for (r = 0; r < size; r++)
-			while (c && r)
-				c % 3 == 1 && r % 3 == 1 ? putchar(' ') : 0, c /= 3, r /= 3;
-			putchar('#');
+			putchar(calculate(c, r));
 		putchar(10);
 	}
+}
+
+/**
+ * calculate - calcualte next char
+ * @col: column
+ * @row: row
+ * Return: char
+ */
+char calculate(int col, int row)
+{
+	while (col && row)
+	{
+		if (col % 3 == 1 && row % 3 == 1)
+			return (' ');
+		col /= 3, row /= 3;
+	}
+	return ('#');
 }
