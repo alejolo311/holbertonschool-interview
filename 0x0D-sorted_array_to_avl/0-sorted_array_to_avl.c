@@ -18,7 +18,7 @@ avl_t *sorted_array_to_avl(int *array, size_t size)
 /**
  * insertAVL - insert in avl
  * @array: the input array (sorted)
- * @begin: the begin 
+ * @begin: the begin
  * @ending: the size - 1
  * @parent: the parent node
  * Return: a new node or null if is the case
