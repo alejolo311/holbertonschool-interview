@@ -1,37 +1,53 @@
 #include "binary_trees.h"
 /**
- * sorted_array_to_avl - transform the
+ * sorted_array_to_avl - transform a sorted array to a avl tree
  * @array: the input array (sorted)
  * @size: the size of the input array
- * Return: a new node or null if is the case
+ * Return: a head of a tree or null if is the case
  */
 avl_t *sorted_array_to_avl(int *array, size_t size)
 {
-	avl_t *node;
-	size_t mNode;
+	avl_t *head;
 
-
-	if (array == NULL || size < 1)
+	if (array == NULL || size == 0)
 		return (NULL);
 
-	node = malloc(1 * sizeof(avl_t));
+	head = insertAVL(array, 0, size - 1, NULL);
+	return (head);
+}
+/**
+ * insertAVL - insert in avl
+ * @array: the input array (sorted)
+ * @begin: the begin 
+ * @ending: the size - 1
+ * @parent: the parent node
+ * Return: a new node or null if is the case
+ */
+avl_t *insertAVL(int *array, size_t begin, size_t ending, avl_t *parent)
+{
+	size_t middle;
+	avl_t *new;
 
-	if (node == NULL)
+	if (begin > ending)
 		return (NULL);
-	mNode = size / 2;
 
-	node->n = array[mNode];
+	new = malloc(sizeof(avl_t));
+	if (new == NULL)
+		return (NULL);
 
-	node->right = sorted_array_to_avl(array + mNode + 1, size - mNode - 1);
+	middle = (begin + ending) / 2;
 
-	node->left = sorted_array_to_avl(array, mNode);
+	new->left = NULL, new->right = NULL;
+	new->n = array[middle], new->parent = parent;
 
+	if (new == NULL)
+		return (NULL);
 
-	if (node->right != NULL)
-		node->right->parent = node;
+	if (middle != begin)
+		new->left = insertAVL(array, begin, middle - 1, new);
 
-	if (node->left != NULL)
-		node->left->parent = node;
+	if (middle != ending)
+		new->right = insertAVL(array, middle + 1, ending, new);
 
-	return (node);
+	return (new);
 }
