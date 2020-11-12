@@ -1,4 +1,5 @@
 #include "search.h"
+skiplist_t *linearSearchSkip(skiplist_t *s, skiplist_t *e, int value);
 /**
  * linear_skip - search for a number in a linear skiping way
  * @list: the input
