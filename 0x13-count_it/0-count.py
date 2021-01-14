@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-query the reddit API
+query the reddit API and
+get all the hot articles
 """
 
 import requests
