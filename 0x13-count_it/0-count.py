@@ -7,8 +7,8 @@ and prints a sorted count
 import requests
 
 
-def getA(sub, w, wd, wd_r, a="",):
-    """ Get all the articles """
+def get_articles(sub, w, wd, wd_r, a="",):
+    """ Get articles """
     url = f"https://www.reddit.com/r/{sub}/hot.json?limit=100&after={a}"
     response = requests.get(url, allow_redirects=False,
                             headers={'User-agent': 'Holberton'}
@@ -28,7 +28,7 @@ def getA(sub, w, wd, wd_r, a="",):
             if w[1] > 0:
                 print("{}: {}".format(w[0], w[1] * wd_r[w[0]]))
         return
-    return getA(sub, w, wd, wd_r, response.json()["data"]["after"])
+    return get_articles(sub, w, wd, wd_r, response.json()["data"]["after"])
 
 
 def count_words(subreddit, word_list):
@@ -42,4 +42,4 @@ def count_words(subreddit, word_list):
             w_d[w] = 0
         else:
             w_d_r[w] += 1
-    getA(subreddit, word_list, w_d, w_d_r)
+    get_articles(subreddit, word_list, w_d, w_d_r)
