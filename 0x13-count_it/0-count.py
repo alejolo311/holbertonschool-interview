@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
-query the reddit API and
-get all the hot articles
+queries the Reddit API, parses the title of the articles
+and prints a sorted count
 """
 
 import requests
