@@ -9,7 +9,8 @@ import requests
 
 def get_articles(sub, w, wd, wd_r, a="",):
     """ Get articles """
-    url = f"https://www.reddit.com/r/{sub}/hot.json?limit=100&after={a}"
+    url = "https://www.reddit.com/r/{}".format(sub)
+    url = "{}/hot.json?limit=100&after={}".format(url, a)
     response = requests.get(url, allow_redirects=False,
                             headers={'User-agent': 'Holberton'}
                             )
