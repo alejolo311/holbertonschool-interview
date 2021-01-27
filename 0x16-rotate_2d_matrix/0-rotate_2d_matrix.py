@@ -5,7 +5,7 @@ rotates 2D matrix using python
 
 
 def rotate_2d_matrix(matrix):
-    """ 
+    """
     How to rotate a matrix 90 degrees
     """
     cpy = list(zip(*matrix[::-1]))
